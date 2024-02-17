@@ -33,9 +33,8 @@ app.use(express.json())
 app.use("/images",express.static(path.join(__dirname,"/images")))
 app.use(cors(
     {
-        origin: ["https://dev-blog-wine.vercel.app"],
-        methods: ["POST", "GET"],
-        credentials: true
+        origin: "*",
+		credentials: true,
     }
 ))
 app.use(cookieParser())
