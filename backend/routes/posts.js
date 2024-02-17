@@ -64,7 +64,7 @@ router.get("/:id",async (req,res)=>{
 //GET POSTS
 router.get("/",async (req,res)=>{
     const query=req.query
-    
+    console.log("Hello..")
     try{
         const searchFilter={
             title:{$regex:query.search, $options:"i"}

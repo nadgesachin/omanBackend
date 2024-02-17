@@ -11,15 +11,17 @@ const userRoute=require('./routes/users')
 const postRoute=require('./routes/posts')
 const commentRoute=require('./routes/comments')
 
+let msg="";
 //database
 const connectDB=async()=>{
     try{
         await mongoose.connect(process.env.MONGO_URL)
         console.log("database is connected successfully!")
-
+        msg="database is connected successfully!";
     }
     catch(err){
         console.log(err)
+        msg=err;
     }
 }
 
@@ -59,6 +61,10 @@ app.post("/api/upload",upload.single("file"),(req,res)=>{
     res.status(200).json("Image has been uploaded successfully!")
 })
 
+app.get("/",(req,res)=>{
+    res.send(msg);
+
+})
 
 app.listen(process.env.PORT,()=>{
     connectDB()
